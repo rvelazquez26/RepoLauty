@@ -1,0 +1,26 @@
+@import '../../../../styles.scss';
+
+.header {
+    background-color: white;
+    transition: box-shadow 0.3s ease;
+}
+  
+.header.scrolled {
+    box-shadow: 0 4px 8px rgba(0, 0, 0.1, 0.1);
+}
+
+img{
+    cursor: pointer;
+}
+:host ::ng-deep{
+    .p-button.p-button-secondary{
+        color: #000000;
+        background: #ffffff;
+        border: 1px solid #020617;
+    }
+
+    .p-card-content{
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+}

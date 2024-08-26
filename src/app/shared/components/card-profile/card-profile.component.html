@@ -1,0 +1,19 @@
+<p-card>
+    <div class="grid">
+        <div class="col-2">
+            <div class="initial-circle">
+                {{ initial }}
+              </div>
+        </div>
+        <div class="col-8 flex align-items-center justify-content-center">
+            Bienvenida {{name}}
+        </div>
+        <div class="col-2 flex align-items-center">
+            <p-dropdown 
+        [options]="options" 
+        optionLabel="name" 
+        placeholder=" " 
+        (onChange)="logout()" />
+        </div>
+    </div>
+</p-card>

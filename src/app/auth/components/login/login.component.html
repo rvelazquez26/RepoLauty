@@ -1,0 +1,49 @@
+<p-card class="flex justify-content-center mt-2">
+  <h1 class="flex justify-content-center pt-5 mb-0 academy">ZATYA ACADEMIA</h1>
+  <h1 class="flex justify-content-center pt-5 mb-0 welcome">Bienvenido a ZATYA</h1>
+  <p class="flex justify-content-center pt-0">Inicia sesión en tu cuenta</p>
+  <div class="flex justify-content-center">
+    <p-button label="Google" icon="pi pi-google" />
+    <p-button label="Facebook" icon="pi pi-facebook" />
+  </div>
+  <p-divider align="center" layout="horizontal">
+    <p>O continùa con</p>
+  </p-divider>
+  <form
+    [formGroup]="loginForm"
+    (ngSubmit)="onSubmit()"
+    autocomplete="off"
+    class="flex flex-column justify-content-center"
+  >
+    <input
+      type="text"
+      pInputText
+      formControlName="userEmail"
+      placeholder="Ingresa tu email"
+      autocomplete="off"
+    />
+    <p-password
+      formControlName="userPassword"
+      [toggleMask]="true"
+      placeholder="Ingresa tu contraseña"
+      autocomplete="new-password"
+    ></p-password>
+    <p-button
+      class="flex justify-content-center"
+      label="Iniciar sesión"
+      severity="contrast"
+      type="submit"
+      [disabled]="!loginForm.valid"
+    />
+  </form>
+  <div class="flex justify-content-center align-items-center">
+    <p-inputSwitch class="small-switch" />
+    <p class="user">Recordar mi usuario</p>
+    <p class="subtitle">¿olvidaste tu contraseña?</p>
+  </div>
+
+  <p class="subtitle mt-0">
+    Al continuar, confirmas que has leído y aceptas los Términos de Uso.
+  </p>
+</p-card>
+<p-toast/>

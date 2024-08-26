@@ -1,0 +1,14 @@
+@import '../../../../../styles.scss';
+
+:host ::ng-deep{
+    .p-button{
+        border-radius: 10px;
+        width: 100%;
+        margin-bottom: 10px;
+        background-color: $primary-color;
+        border: none;
+    }
+    .p-rating .p-rating-item.p-rating-item-active .p-rating-icon {
+        color: $primary-color;
+    }
+}

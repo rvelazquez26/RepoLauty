@@ -1,0 +1,37 @@
+@import '../../../../../styles.scss';
+
+.fondo {
+    background: linear-gradient(to right, pink 60%, transparent), url('../../../../../assets/fondoDashboard.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center right;
+    width: 100%;
+  }
+  
+.filter{
+    background-color: white;
+    border-radius: 55px;
+}
+/* Estilo para el input con borde solo en la parte inferior */
+.underline-input {
+    border-radius: 0px;
+    border: none;
+    border-bottom: 1px solid #000;
+    outline: none;
+    width: calc(100% - 2rem); /* Ajusta el ancho del input para compensar el margen izquierdo */
+    box-sizing: border-box; /* Asegura que el padding y border se incluyan en el ancho total */
+    padding: 0.5rem 0; /* Añade un padding superior e inferior para que el texto no se corte */
+  }
+
+:host ::ng-deep{
+    .p-button{
+        color: #ffffff;
+        font-weight: bold;
+        background: $primary-color;
+        border: none;
+        border-radius: 35px;
+        padding-left: 40px;
+        padding-right: 25px;
+        height: 65px;
+    }
+}

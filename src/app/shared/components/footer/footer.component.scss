@@ -1,0 +1,22 @@
+@import '../../../../styles.scss';
+
+p{
+    color: white;
+}
+.pi{
+    color: white;
+    border: 1px solid;
+    padding: 10px;
+    margin: 5px;
+}
+
+h3{
+    color: white;
+    font-family: $primary-font;
+}
+
+:host ::ng-deep{
+    .p-element{
+        width: 60%;
+    }
+}

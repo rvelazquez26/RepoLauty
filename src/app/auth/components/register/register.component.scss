@@ -1,0 +1,93 @@
+@import '../../../../styles.scss';
+
+input{
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding-right: 90px;
+}
+
+span{
+    color: $primary-color;
+}
+.subtitle{
+    color: rgb(53, 53, 53);
+    font-size: 12px;
+}
+
+.justify {
+    position: absolute;
+    top: 0;  /* Ajusta según sea necesario */
+    left: 0;  /* Ajusta según sea necesario */
+    width: 400px;  /* Asegúrate de que el ancho coincida con tus necesidades */
+    z-index: 10;  /* Asegura que esté por encima de otros elementos */
+  }
+ 
+  .academy{
+    display: none !important;
+}
+
+@media (max-width: 920px) {
+    
+    .academy{
+        display:flex !important;
+    }
+
+  }
+
+  @media (max-width: 920px) {
+    .welcome {
+        display: none !important;
+
+    }
+  }
+    
+:host ::ng-deep{
+    button.p-ripple.p-element.p-button.p-component{
+        border-radius: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+        background-color: white;
+        border: 1px solid $primary-color;
+        color: black;
+        margin: 5px;
+    }
+    span.p-button-icon.p-button-icon-left.pi.pi-facebook{
+        color: rgb(54, 54, 160);
+    }
+    span.p-button-icon.p-button-icon-left.pi.pi-google {
+        background: linear-gradient(to bottom, rgb(176, 36, 36) 30%, rgb(38, 172, 82) 35%, rgb(53, 23, 227) 35%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    p-divider.p-element{
+        width: 80%;
+    }
+    .p-divider-horizontal.p-divider-center{
+        margin-top: 0px;
+    }
+    input.p-inputtext.p-component.p-element.p-password-input{
+        width: 370px;
+        border-radius: 10px;
+        margin-bottom: 5px;
+    }    
+    .p-button.p-button-contrast{
+        color: #ffffff !important;
+        background: $primary-color !important;
+        width: 280px;
+    }
+    .p-password-panel{
+        display: none;
+    }
+    
+    .p-card{
+        box-shadow: none !important;
+    }
+
+    @media (max-width: 767px) {
+    .p-card{
+            box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12) !important;
+        }
+    }
+}
+  

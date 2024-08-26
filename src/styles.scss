@@ -1,0 +1,30 @@
+@import "primeicons/primeicons.css";
+
+$primary-color: #BA7894;
+$secondary-color: #962756;
+$tertiary-color: #422A3C;
+
+$primary-font: 'Playfair Display', serif;
+
+h1{
+    color: $primary-color;
+    font-family: $primary-font;
+}
+
+footer{
+    background-color: #241520;
+}
+
+body{
+    margin: 0px;
+}
+
+  
+
+:host ::ng-deep{
+    .p-button.p-button-contrast{
+        color: #ffffff;
+        background: #020617;
+        border: 1px solid #020617;
+    }
+}

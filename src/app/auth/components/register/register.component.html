@@ -1,0 +1,65 @@
+<p-card class="flex justify-content-center mt-2">
+  <h1 class="flex justify-content-center pt-5 mb-0 academy">ZATYA ACADEMIA</h1>
+  <h1 class="flex justify-content-center pt-5 mb-0 welcome mb-0">
+    Crea tu cuenta en ZATYA
+  </h1>
+  <p class="flex justify-content-center mb-0">
+    Crear tu cuenta es facil
+  </p>
+  <div class="flex justify-content-center">
+    <p-button label="Google" icon="pi pi-google" />
+    <p-button label="Facebook" icon="pi pi-facebook" />
+  </div>
+  <p-divider align="center" layout="horizontal">
+    <p>O continùa con</p>
+  </p-divider>
+  <form
+    [formGroup]="registerForm"
+    (ngSubmit)="onSubmit()"
+    autocomplete="off"
+    class="flex flex-column justify-content-center"
+  >
+    <input
+      type="text"
+      pInputText
+      placeholder="Ingresa tu nombre"
+      formControlName="nombre"
+      autocomplete="off"
+    />
+    <input
+      type="text"
+      pInputText
+      placeholder="Ingresa tu apellido"
+      formControlName="apellido"
+      autocomplete="off"
+    />
+    <input
+      type="text"
+      pInputText
+      placeholder="Ingresa tu email"
+      formControlName="mail"
+      autocomplete="off"
+    />
+    <p-password
+      name="userPassword"
+      [toggleMask]="true"
+      placeholder="Ingresa tu contraseña"
+      formControlName="contraseña"
+      autocomplete="new-password"
+    ></p-password>
+    <p-button
+    class="flex justify-content-center"
+      label="Crear mi cuenta"
+      severity="contrast"
+      (onClick)="onSubmit()"
+      [disabled]="!registerForm.valid"
+    ></p-button>
+  </form>
+  <div class="flex flex-column align-items-center">
+    <p class="mb-0">¿Ya tienes una cuenta? <span>¡Inicia sesión!</span></p>
+    <p class="subtitle mt-0">
+      Al continuar, confirmas que has leído y aceptas los Términos de Uso.
+    </p>
+  </div>
+</p-card>
+<p-toast />

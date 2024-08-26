@@ -1,0 +1,33 @@
+@import '../../../../styles.scss';
+
+.initial-circle {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $primary-color; 
+    color: white;
+    border-radius: 50%;
+    font-size: 20px;     
+    font-weight: bold;
+  }
+
+:host ::ng-deep{
+    span.p-element.p-dropdown-label.p-inputtext.p-placeholder.ng-star-inserted{
+        display: none;
+        border: none;
+    }
+    .p-dropdown{
+        border: none;
+    }
+
+    div.p-card-body{
+        padding: 10px;
+        padding-right: 15px;
+    }
+
+    div.p-dropdown-panel.p-component.ng-star-inserted{
+        margin-left: -40px;
+    }
+}

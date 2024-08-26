@@ -1,0 +1,42 @@
+@import '../../../../../styles.scss';
+
+img{
+    border-radius: 10px;
+    width: 80%;
+}
+
+h1{
+    margin-bottom: 0px;
+}
+
+p{
+    margin-top: 0px;
+    color: rgb(98, 98, 98);
+}
+
+:host ::ng-deep{
+    input.p-inputtext.p-component.p-element{
+        width: 60%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 40px;
+        margin-bottom: 15px;
+        border-radius: 25px;
+    }
+
+    .p-inputtext:enabled:focus{
+        box-shadow: 0 0 0 0.2rem $primary-color;
+        border-color: $primary-color;
+    }
+    .p-inputtext:enabled:hover{
+        border-color: $primary-color;
+    }
+    span.p-input-icon.pi{
+        padding-left: 10px;
+    }
+    button.p-ripple.p-element.p-button.p-component{
+        border-radius: 20px;
+        padding-left: 35px;
+        padding-right: 35px;
+    }
+}

@@ -1,0 +1,36 @@
+/* Estilos básicos */
+img{
+    height: 220px;
+}
+.image-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .category-img {
+    display: block;
+    width: 100%;
+    transition: opacity 0.5s ease;
+  }
+  
+  .category-title {
+    margin-top: 1rem; /* Mostrar el h1 debajo de la imagen */
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    opacity: 1; /* Inicialmente visible */
+    color: #BA7894;
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  
+  /* Efecto hover */
+  .image-container:hover .category-img {
+    opacity: 0.3;
+  }
+  
+  .image-container:hover .category-title {
+    transform: translateY(-250%); /* Subir el h1 para que se superponga a la imagen */
+    opacity: 1;
+    color: #533642;
+    font-size: 3rem;
+  }
+  

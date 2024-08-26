@@ -1,0 +1,38 @@
+<div class="grid flex">
+  <div class="col-12">
+    <h5 class="flex justify-content-center mb-0">CURSOS DISPONIBLES</h5>
+    <h1 class="flex justify-content-center mt-0">Recomendados</h1>
+  </div>
+  </div>
+<p-carousel
+  [value]="products"
+  [numVisible]="4"
+  [numScroll]="3"
+  [circular]="false"
+  [responsiveOptions]="responsiveOptions"
+>
+  <ng-template let-product pTemplate="item">
+    <div class="border-1 surface-border m-2" style="border-radius: 25px;">
+        <div class="mb-3">
+            <div class="relative mx-auto">
+                <img
+                [src]="product.image"
+                [alt]="product.name"
+                class="w-full"
+                style="border-top-left-radius: 20px; border-top-right-radius: 20px"
+                />
+            </div>
+        </div>
+        <div class="px-5 mb-3">
+        <div class="font-medium">
+            {{ product.name }}
+        </div>
+        <div class="mt-0 mb-2 font-semibold text-xl">
+            {{ "$" + product.price }}
+        </div>
+          <p-button label="AGREGAR AL CARRITO"/>
+          <p-rating [(ngModel)]="product.rating" [cancel]="false" [disabled]="true"/> <span class="ml-2" style="font-size: 25px;">{{product.rating}}</span>
+      </div>
+    </div>
+  </ng-template>
+</p-carousel>
