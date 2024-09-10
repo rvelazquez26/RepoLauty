@@ -1,15 +1,15 @@
 <div class="grid flex align-items-center header" [class.scrolled]="isScrolled">
-    <div class="col-2 xl:col-1" (click)="scrollToTop()">
-        <img src="../../../../assets/Logo.svg" alt="" class="pl-3">
-    </div>
-    <div class="col-10 xl:col-5 flex justify-content-center xl:justify-content-start">
-        <h1>ZATYA ACADEMIA</h1>
-    </div>
-    <div class="col-12 xl:col-3 flex justify-content-around p-0 xl:justify-content-around">
-        <p class="flex align-items-center">Home</p>
-        <p class="flex align-items-center">Sobre nosotros</p>
-        <p class="flex align-items-center">Contactanos</p>
-    </div>
+        <div class="col-2 xl:col-1" (click)="scrollToTop()">
+            <img src="../../../../assets/Logo.svg" alt="" class="pl-3">
+        </div>
+        <div class="col-10 xl:col-5 flex justify-content-center xl:justify-content-start">
+            <h1>ZATYA ACADEMIA</h1>
+        </div>
+        <div class="col-12 xl:col-3 flex justify-content-around p-0 xl:justify-content-around">
+            <p class="flex align-items-center">Home</p>
+            <p class="flex align-items-center">Sobre nosotros</p>
+            <p class="flex align-items-center">Contactanos</p>
+        </div>
     <div class="col-12 xl:col-3 flex justify-content-around align-items-center pb-3 xl:justify-content-around align-items-center">
         @if(isAuthenticated){
             <shared-card-profile class="pt-3"/>
