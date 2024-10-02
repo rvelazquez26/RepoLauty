@@ -1,0 +1,61 @@
+<p-dialog
+  header="Compartir"
+  [modal]="true"
+  [(visible)]="visible"
+  [style]="{ width: '25rem' }"
+  (onHide)="onClose()"
+>
+  <div class="grid p-3" style="text-align: center">
+    <p>"¡Comparte esto con tus colegas y crezcan juntas en su carrera!"</p>
+  </div>
+  <div class="grid">
+    <div class="col-6 flex justify-content-end">
+        <div
+        class="flex align-items-center switch-container"
+        [ngClass]="{ 'active': isActiveFacebook }"
+        style="
+          width: 70% !important;
+          border-radius: 50px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          padding: 1px;
+          cursor: pointer;
+        "
+        (click)="toggleSwitchFacebook()"
+      >
+        <img
+          [ngStyle]="{ transform: isActiveFacebook ? 'translateX(70px)' : 'translateX(0)' }"
+          style="width: 45px; transition: transform 1s ease;"
+          src="../../../assets/image 58.png"
+          alt=""
+        />
+        <span class="pi pi-send pr-3" style="margin-left: auto;"></span>
+      </div>
+    </div>
+    <div class="col-6">
+        <div
+        class="flex align-items-center switch-container"
+        [ngClass]="{ 'activeInsta': isActiveInstagram }"
+        style="
+          width: 70% !important;
+          border-radius: 50px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          padding: 1px;
+          cursor: pointer; /* Cambia el cursor a pointer para indicar que es clickeable */
+        "
+        (click)="toggleSwitchInstagram()"
+      >
+        <img
+          [ngStyle]="{ transform: isActiveInstagram ? 'translateX(70px)' : 'translateX(0)' }"
+          style="width: 45px; transition: transform 0.3s ease;"
+          src="../../../assets/image 62.png"
+          alt=""
+        />
+        <span class="pi pi-send pr-3" style="margin-left: auto;"></span>
+      </div>
+    </div>
+  </div>
+  <div class="grid">
+    <div class="col-6"></div>
+    <div class="col-6"></div>
+  </div>
+</p-dialog>

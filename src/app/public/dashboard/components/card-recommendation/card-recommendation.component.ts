@@ -5,6 +5,9 @@ import { TagModule } from 'primeng/tag';
 import { FormsModule } from '@angular/forms'; // Necesario para [(ngModel)]
 
 import { RatingModule } from 'primeng/rating';
+import { Router } from '@angular/router';
+import { ProductService } from '../../../../services/product.service';
+import { Product } from '../../../../public/interfaces/product.iterface'; // Importar la interfaz Product
 
 
 @Component({
@@ -15,44 +18,16 @@ import { RatingModule } from 'primeng/rating';
   styleUrl: './card-recommendation.component.scss'
 })
 export class CardRecommendationComponent {
-  products = [
-    {
-      image: '../../../../../assets/Recommendation.svg',
-      name: 'Manicuria electrica',
-      inventoryStatus: 'In Stock',
-      price: 29.99,
-      rating: 4
-    },
-    {
-      image: '../../../../../assets/Imagen 8.png',
-      name: 'Esmaltado semipermanente ',
-      inventoryStatus: 'Out of Stock',
-      price: 49.99,
-      rating: 1
-    },
-    {
-      image: '../../../../../assets/Imagen 9.png',
-      name: 'Anatomía y patologías de la uña',
-      inventoryStatus: 'In Stock',
-      price: 19.99,
-      rating: 4
-    },
-    {
-      image: '../../../../../assets/Imagen 10.png',
-      name: 'Perfeccionamiento en softgel',
-      inventoryStatus: 'Low Stock',
-      price: 39.99,
-      rating: 3
-    },
-    {
-      image: '../../../../../assets/Recommendation.svg',
-      name: 'Product 5',
-      inventoryStatus: 'In Stock',
-      price: 59.99,
-      rating: 5
-    }
-  ];
 
+  public products: Product[] = [];
+
+  constructor(private router: Router, private productService: ProductService){}
+
+  ngOnInit(){
+    this.productService.getAllProducts().subscribe(products => this.products = products);
+    console.log(this.products);
+    
+  }
   responsiveOptions = [
     {
       breakpoint: '1024px',
@@ -82,4 +57,11 @@ export class CardRecommendationComponent {
         return 'info';
     }
   }
+
+  public viewProduct(id: number){
+    this.productService.dataBindindId(id.toString());
+    this.router.navigate(['main/product/view']);
+    console.log('Ver producto');
+  }
+  
 }

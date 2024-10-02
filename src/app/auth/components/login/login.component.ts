@@ -11,6 +11,9 @@ import { ToastModule } from 'primeng/toast';
 import { CardModule } from 'primeng/card';
 import { UserService } from '../../../services/user.service';
 import { ToastService } from '../../../services/toast.service';
+import { AuthService } from '../../services/auth.service';
+import { SpinnerComponent } from '../../../shared/spinner/spinner.component';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'auth-login',
@@ -24,21 +27,18 @@ import { ToastService } from '../../../services/toast.service';
     InputSwitchModule,
     ToastModule,
     ReactiveFormsModule,
-    CardModule
+    CardModule,
+    SpinnerComponent
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
   loginForm!: FormGroup;
-
-  hardcodedUser = {
-    email: 'londerotizi@gmail.com',
-    password: 'Encode2022!'
-  };
+  isLoading: boolean = false;
 
   constructor(
-    private userService: UserService, 
+    private authService: AuthService, 
     private fb: FormBuilder,
     private toast: ToastService,
     private router: Router) {
@@ -46,24 +46,34 @@ export class LoginComponent {
 
   ngOnInit(): void{
     this.loginForm = this.fb.group({
-      userEmail: ['', [Validators.required, Validators.email]],
-      userPassword: ['', [Validators.required]]
+      mail: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]]
     });
   }
 
   onSubmit(): void {
+    this.isLoading = true;
+    console.log(this.isLoading);
     if (this.loginForm.valid) {
-      const { userEmail, userPassword } = this.loginForm.value;
-
-      if (userEmail === this.hardcodedUser.email && userPassword === this.hardcodedUser.password) {
-        this.userService.setAuthenticated(true);
-        this.router.navigate(['']);
-      } else {
-        console.log("error");
-        
-        this.toast.showError("Usuario o contraseña incorrectos");
-      }
+      this.authService.login(this.loginForm.value)
+      .pipe(finalize(()=>{
+        setTimeout(() => {
+          this.isLoading = false
+        }, 1000);
+      }))
+      .subscribe({
+        next: (res) => {
+          console.log("respuesta");
+          console.log(res);
+          this.router.navigate(['main/dashboard']);
+        },
+        error: (error) => {
+          setTimeout(() => {
+            this.toast.showError('Usuario o contraseña incorrectos');
+          }, 1000);
+        }
+      })
     }
-}
+  }
 
 }

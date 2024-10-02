@@ -1,4 +1,4 @@
-@import '../../../../styles.scss';
+@import '../../../styles.scss';
 
 .initial-circle {
     width: 40px;
@@ -12,7 +12,15 @@
     font-size: 20px;     
     font-weight: bold;
   }
+.name{
+    font-size: 20px;
+    color: black;
+}
 
+.role{
+    font-size: 12px;
+    color: gray;
+}
 :host ::ng-deep{
     span.p-element.p-dropdown-label.p-inputtext.p-placeholder.ng-star-inserted{
         display: none;

@@ -1,0 +1,153 @@
+<div class="p-5">
+  <h1 style="color: black">{{ product?.name }}</h1>
+  <div class="grid p-3">
+    <!-- Imagen principal -->
+    <div class="col-9 p-0">
+      <img
+        style="
+          border-radius: 30px;
+          width: 100%;
+          height: 500px;
+          object-fit: cover;
+        "
+        src="{{ product?.image }}"
+        alt="Product Image"
+        class="mb-3"
+      />
+    </div>
+
+    <!-- Columnas de imágenes pequeñas -->
+    <div class="col-3 flex flex-column pl-3 p-0">
+      <img
+        style="
+          width: 90%;
+          height: 115px;
+          margin-bottom: 13px;
+          border-radius: 15px;
+          object-fit: cover;
+        "
+        src="{{ product?.image }}"
+        alt=""
+      />
+      <img
+        style="
+          width: 90%;
+          height: 115px;
+          margin-bottom: 13px;
+          border-radius: 15px;
+          object-fit: cover;
+        "
+        src="{{ product?.image }}"
+        alt=""
+      />
+      <img
+        style="
+          width: 90%;
+          height: 115px;
+          margin-bottom: 13px;
+          border-radius: 15px;
+          object-fit: cover;
+        "
+        src="{{ product?.image }}"
+        alt=""
+      />
+      <img
+        style="
+          width: 90%;
+          height: 115px;
+          border-radius: 15px;
+          object-fit: cover;
+        "
+        src="{{ product?.image }}"
+        alt=""
+      />
+    </div>
+  </div>
+  <div class="grid p-3">
+    <div class="col-3">
+      <p-card class="flex justify-content-center mt-2">
+        <p class="information">Informacion</p>
+        <div class="grid">
+          <div class="col-1">
+            <span class="pi pi-clock"></span>
+          </div>
+          <div class="col-11 flex justify-content-center">
+            <p class="m-0">20hs</p>
+          </div>
+        </div>
+        <div class="grid">
+            <div class="col-1">
+              <span class="pi pi-calendar"></span>
+            </div>
+            <div class="col-11 flex justify-content-center">
+              <p class="m-0">2 clases semanales de 2hs</p>
+            </div>
+          </div>
+          <div class="grid">
+            <div class="col-1">
+              <span class="pi pi-book"></span>
+            </div>
+            <div class="col-11 flex justify-content-center">
+              <p class="m-0">En vivo - Pregrabado</p>
+            </div>
+          </div>
+          <div class="grid">
+            <div class="col-1">
+              <span class="pi pi-verified"></span>
+            </div>
+            <div class="col-9 flex justify-content-center">
+              <p class="m-0">Nivel intermedio</p>
+            </div>
+            <div class="col-2">
+                <span style="cursor: pointer;" class="pi pi-info-circle" pTooltip="Nivel intermedio:
+                Poseer una solida compresión y habilidad practica en las técnicas básicas de manicura" 
+                tooltipPosition="top"></span>
+              </div>              
+          </div>
+      </p-card>
+    </div>
+    <div class="col-9 pl-3">
+      <h3>¿Qué ofrece este curso?</h3>
+      <p>
+        En este curso, perfeccionarás tu manejo del torno con precisión y
+        seguridad, así como técnicas avanzadas de limado, pulido y diseño de
+        uñas. Desarrollarás habilidades especializadas para lograr acabados
+        impecables, proporcionar un brillo duradero y remover productos como gel
+        y acrílico de manera segura. Además, explorarás el uso creativo del
+        torno para ofrecer diseños únicos y aprenderás a mantener tu equipo en
+        condiciones óptimas. Al concluir el curso, habrás mejorado
+        significativamente tus competencias técnicas y creativas, lo que te
+        permitirá ofrecer un servicio de manicura de la más alta calidad.
+        ¡Inscríbete y lleva tus habilidades al siguiente nivel!
+      </p>
+      <p-divider />
+      <h3>Programa</h3>
+      <p>
+        En este curso, perfeccionarás tu manejo del torno con precisión y
+        seguridad, así como técnicas avanzadas de limado, pulido y diseño de
+        uñas. Desarrollarás habilidades especializadas para lograr acabados
+        impecables, proporcionar un brillo duradero y remover productos como gel
+        y acrílico de manera segura. Además, explorarás el uso creativo del
+        torno para ofrecer diseños únicos y aprenderás a mantener tu equipo en
+        condiciones óptimas. Al concluir el curso, habrás mejorado
+        significativamente tus competencias técnicas y creativas, lo que te
+        permitirá ofrecer un servicio de manicura de la más alta calidad.
+        ¡Inscríbete y lleva tus habilidades al siguiente nivel!
+      </p>
+      <div class="grid">
+        <div class="col-6 flex">
+            <p-button class="flex align-items-center mr-3" label="Comprar" severity="secondary"/>
+            <p-button class="flex align-items-center" label="Añadir a favoritos" severity="contrast"/>
+        </div>
+        <div class="col-6 flex justify-content-end">
+            <p-button icon="pi pi-share-alt" class="flex align-items-center mr-3" label="Compartir" severity="secondary"
+            (onClick)="showDialog()"
+            />
+        </div>
+      </div>
+    </div>
+  </div>
+  <p-divider />
+  <card-certificate></card-certificate>
+</div>
+<card-share [(visible)]="isDialogVisible"/>

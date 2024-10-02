@@ -3,10 +3,48 @@ import { DashboardComponent } from './public/dashboard/dashboard.component';
 import { RegisterComponent } from './auth/components/register/register.component';
 import { LoginComponent } from './auth/components/login/login.component';
 import { AuthComponent } from './auth/auth.component';
-
+import { LoginGuard } from './core/guards/login.guard';
+import { DetailsComponent } from './public/products/details/details.component';
+import { MainComponent } from './public/main/main.component';
 
 export const routes: Routes = [
-    { path:'', component: DashboardComponent},
-    { path: 'register', component: AuthComponent },
-    { path: 'login', component: AuthComponent }
+  {
+    path: 'auth',
+    title: 'Login',
+    component: AuthComponent,
+    canActivate: [LoginGuard],
+    children: [
+      { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
+      {
+        path: 'register',
+        component: RegisterComponent,
+        canActivate: [LoginGuard],
+      },
+      { path: '**', redirectTo: 'auth/login' },
+    ],
+  },
+  {
+    path: 'main',
+    component: MainComponent,
+    children: [
+      {
+        path: 'dashboard',
+        title: 'Zatya',
+        component: DashboardComponent,
+      },
+      {
+        path: 'product/view',
+        component: DetailsComponent,
+      },
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'dashboard',
+      },
+    ],
+  },
+  {
+    path: '**',
+    redirectTo: 'main/dashboard',
+  },
 ];

@@ -5,10 +5,11 @@
                 {{ initial }}
               </div>
         </div>
-        <div class="col-8 flex align-items-center justify-content-center">
-            Bienvenida {{name}}
+        <div class="col-7 flex flex-column ">
+                <span class="pl-3 name">{{name}}</span>
+                <span class="pl-3 role">{{role}}</span>
         </div>
-        <div class="col-2 flex align-items-center">
+        <div class="col-3 flex align-items-center justify-content-start">
             <p-dropdown 
         [options]="options" 
         optionLabel="name" 

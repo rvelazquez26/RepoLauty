@@ -32,7 +32,6 @@ export class AuthComponent {
   }
 
   onDashboard(){
-    this.userService.logout();
-    this.router.navigate(['']);
+    this.router.navigate(['main/dashboard']);
   }
 }

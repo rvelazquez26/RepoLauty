@@ -1,6 +1,8 @@
 <p-card class="flex justify-content-center mt-2">
   <h1 class="flex justify-content-center pt-5 mb-0 academy">ZATYA ACADEMIA</h1>
-  <h1 class="flex justify-content-center pt-5 mb-0 welcome">Bienvenido a ZATYA</h1>
+  <h1 class="flex justify-content-center pt-5 mb-0 welcome">
+    Bienvenido a ZATYA
+  </h1>
   <p class="flex justify-content-center pt-0">Inicia sesión en tu cuenta</p>
   <div class="flex justify-content-center">
     <p-button label="Google" icon="pi pi-google" />
@@ -15,19 +17,37 @@
     autocomplete="off"
     class="flex flex-column justify-content-center"
   >
-    <input
-      type="text"
-      pInputText
-      formControlName="userEmail"
-      placeholder="Ingresa tu email"
-      autocomplete="off"
-    />
-    <p-password
-      formControlName="userPassword"
-      [toggleMask]="true"
-      placeholder="Ingresa tu contraseña"
-      autocomplete="new-password"
-    ></p-password>
+    <div class="div flex flex-column mb-2">
+      <input
+        type="text"
+        pInputText
+        formControlName="mail"
+        placeholder="Ingresa tu email"
+        autocomplete="off"
+        class="mb-0 w-full"
+      />
+      @if(loginForm.get('mail')?.hasError('required') &&
+      loginForm.get('mail')?.touched){
+      <small class="text-red-500 ml- mb-1">Este campo es obligatorio.</small>
+      }
+      @if(loginForm.get('mail')?.hasError('email') &&
+      loginForm.get('mail')?.touched){
+      <small class="text-red-500 ml- mb-1">Formato de correo inválido.</small>
+      }
+    </div>
+    <div class="div flex flex-column mb-2">
+      <p-password
+        formControlName="password"
+        [toggleMask]="true"
+        placeholder="Ingresa tu contraseña"
+        autocomplete="new-password"
+      ></p-password>
+      @if(loginForm.get('password')?.hasError('required') &&
+      loginForm.get('password')?.touched){
+      <small class="text-red-500 ml- mb-1">Este campo es obligatorio.</small>
+      }
+    </div>
+
     <p-button
       class="flex justify-content-center"
       label="Iniciar sesión"
@@ -46,4 +66,5 @@
     Al continuar, confirmas que has leído y aceptas los Términos de Uso.
   </p>
 </p-card>
-<p-toast/>
+<p-toast />
+<shared-spinner [spinner]="isLoading"/>

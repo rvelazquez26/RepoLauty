@@ -12,7 +12,7 @@
   [responsiveOptions]="responsiveOptions"
 >
   <ng-template let-product pTemplate="item">
-    <div class="border-1 surface-border m-2" style="border-radius: 25px;">
+    <div class="border-1 surface-border m-2" (click)="viewProduct(product.id)" style="border-radius: 25px; cursor: pointer;">
         <div class="mb-3">
             <div class="relative mx-auto">
                 <img

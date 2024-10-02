@@ -13,20 +13,9 @@ export class UserService {
 
   private baseUrl = Environment.apiUrl;
 
-  private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
-  isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
-
   constructor(private http: HttpClient) {}
   
   postUser(user: User): Observable<string> {
     return this.http.post<string>(`${this.baseUrl}/usuario`, user, { responseType: 'text' as 'json' });
-  }
-
-  setAuthenticated(status: boolean) {
-    this.isAuthenticatedSubject.next(status);
-  }
-  
-  logout(): void {
-    this.isAuthenticatedSubject.next(false);
   }
 }

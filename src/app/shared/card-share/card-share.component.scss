@@ -1,0 +1,14 @@
+.switch-container {
+    transition: background-color 2s ease; /* Transición suave para el cambio de color */
+  }
+  
+  .switch-container.active {
+    background-color: rgb(0, 68, 255); /* Cambia el color de fondo a rojo cuando isActive es true */
+  }
+
+  .switch-container.activeInsta {
+    background-color: rgb(250, 0, 83); /* Cambia el color de fondo a rojo cuando isActive es true */
+  }
+
+  
+  

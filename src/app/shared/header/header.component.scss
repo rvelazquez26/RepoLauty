@@ -1,4 +1,4 @@
-@import '../../../../styles.scss';
+@import '../../../styles.scss';
 
 .header {
     background-color: white;
@@ -14,10 +14,16 @@ img{
 }
 :host ::ng-deep{
     .p-button.p-button-secondary{
-        color: #000000;
+        color: $primary-color;
         background: #ffffff;
-        border: 1px solid #020617;
+        border: 2px solid $primary-color;
     }
+    .p-button.p-button-contrast{
+        color: white;
+        background: $primary-color;
+        border: 2px solid $primary-color;
+    }
+
 
     .p-card-content{
         padding-top: 0px;
