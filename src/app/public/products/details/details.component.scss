@@ -21,4 +21,36 @@
         border: 2px solid $primary-color;
     }
 
+    .p-button{
+        color: white;
+        background: $primary-color;
+        border: 2px solid $primary-color; 
+    }
+
 }
+/* Estilos CSS personalizados */
+:host ::ng-deep .p-carousel {
+    overflow: hidden; /* Evita el scroll en el carrusel */
+    height: auto; /* Ajusta la altura automáticamente */
+  }
+  
+  :host ::ng-deep .p-carousel-item {
+    display: flex;
+    justify-content: center; /* Centra las imágenes */
+    align-items: center; /* Centra verticalmente */
+  }
+  
+  :host ::ng-deep .p-carousel img {
+    max-height: 400px; /* Cambia esta altura según necesites */
+    width: auto; /* Mantiene la relación de aspecto */
+    border-radius: 10px; /* Borde redondeado para las imágenes */
+  }
+  :host ::ng-deep .p-dialog-content {
+    overflow: hidden; /* Evita el scroll en el contenido del diálogo */
+    padding: 0; /* Ajusta el padding si es necesario */
+  }
+  
+  :host ::ng-deep .p-dialog {
+    height: auto; /* Asegúrate de que la altura se ajuste automáticamente */
+  }
+    

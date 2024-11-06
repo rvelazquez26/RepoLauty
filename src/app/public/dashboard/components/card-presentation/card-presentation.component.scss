@@ -34,4 +34,18 @@
         padding-right: 25px;
         height: 65px;
     }
+
+    .p-dropdown{
+        border: none;
+    }
+    .p-button {
+      display: flex;                  /* Usar Flexbox */
+      justify-content: center;        /* Centrar horizontalmente */
+      align-items: center;    
+  }
+  
+  .p-button .pi {                  /* Asegúrate de que el icono se centre */
+      margin-right: 12px;               /* Centrar icono si es necesario */
+  }
+  
 }

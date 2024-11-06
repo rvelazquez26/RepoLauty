@@ -93,4 +93,12 @@ export class ProductService {
     this.idSource.next(id);
   }
 
+  filterProducts(name: string, knowledge: string): Observable<Product[]> {
+    const filteredProducts = this.products.filter(product => 
+      product.name.toLowerCase().includes(name.toLowerCase()) &&
+      product.inventoryStatus.toLowerCase().includes(knowledge.toLowerCase())
+    );
+    return of(filteredProducts);
+  }
+
 }

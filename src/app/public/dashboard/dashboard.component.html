@@ -1,7 +1,8 @@
-<dashboard-card-presentation id="home-section"/>
+<dashboard-card-presentation id="home-section" (filterApplied)="cardRecommendation.applyFilter($event)" />
 <shared-card-category />
-<card-recommendation />
-<dashboard-card-about-us id="about-section"/>
+<card-recommendation #cardRecommendation />
+<dashboard-card-about-us id="about-section" />
 <dashboard-card-contact-us id="contact-section" />
+
 
 

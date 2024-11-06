@@ -90,7 +90,8 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/app/shared/assetsVideos"
             ],
             "styles": [
               "src/styles.scss"

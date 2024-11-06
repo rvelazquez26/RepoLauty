@@ -23,7 +23,7 @@
         (click)="toggleSwitchFacebook()"
       >
         <img
-          [ngStyle]="{ transform: isActiveFacebook ? 'translateX(70px)' : 'translateX(0)' }"
+          [ngStyle]="{ transform: isActiveFacebook ? 'translateX(90px)' : 'translateX(0)' }"
           style="width: 45px; transition: transform 1s ease;"
           src="../../../assets/image 58.png"
           alt=""
@@ -45,8 +45,8 @@
         (click)="toggleSwitchInstagram()"
       >
         <img
-          [ngStyle]="{ transform: isActiveInstagram ? 'translateX(70px)' : 'translateX(0)' }"
-          style="width: 45px; transition: transform 0.3s ease;"
+          [ngStyle]="{ transform: isActiveInstagram ? 'translateX(90px)' : 'translateX(0)' }"
+          style="width: 45px; transition: transform 1s ease;"
           src="../../../assets/image 62.png"
           alt=""
         />
@@ -55,7 +55,49 @@
     </div>
   </div>
   <div class="grid">
-    <div class="col-6"></div>
-    <div class="col-6"></div>
+    <div class="col-6 flex justify-content-end">
+        <div
+        class="flex align-items-center switch-container"
+        [ngClass]="{ 'activeLink': isActiveLink }"
+        style="
+          width: 70% !important;
+          border-radius: 50px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          padding: 1px;
+          cursor: pointer;
+        "
+        (click)="toggleSwitchLink()"
+      >
+        <img
+          [ngStyle]="{ transform: isActiveLink ? 'translateX(90px)' : 'translateX(0)' }"
+          style="width: 45px; transition: transform 1s ease;"
+          src="../../../assets/Component 3.png"
+          alt=""
+        />
+        <span class="pi pi-send pr-3" style="margin-left: auto;"></span>
+      </div>
+    </div>
+    <div class="col-6">
+        <div
+        class="flex align-items-center switch-container"
+        [ngClass]="{ 'activeTwitter': isActiveTwitter }"
+        style="
+          width: 70% !important;
+          border-radius: 50px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          padding: 1px;
+          cursor: pointer; /* Cambia el cursor a pointer para indicar que es clickeable */
+        "
+        (click)="toggleSwitchTwitter()"
+      >
+        <img
+          [ngStyle]="{ transform: isActiveTwitter ? 'translateX(90px)' : 'translateX(0)' }"
+          style="width: 45px; transition: transform 1s ease;"
+          src="../../../assets/Icon (3).png"
+          alt=""
+        />
+        <span class="pi pi-send pr-3" style="margin-left: auto;"></span>
+      </div>
+    </div>
   </div>
 </p-dialog>

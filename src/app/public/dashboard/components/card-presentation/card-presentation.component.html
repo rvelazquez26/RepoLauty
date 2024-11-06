@@ -19,29 +19,35 @@
       <div class="col-8 pl-5">
         <div class="grid filter">
           <div class="col-5 pl-5">
-            <h3 class="mt-2 mb-0 pl-3">
-              Nombre del curso
-            </h3>
+            <h3 class="mt-2 mb-0 pl-3">Nombre del curso</h3>
             <input
               class="ml-3 underline-input"
               type="text"
               pInputText
               placeholder="Buscar por nombre del curso"
+              [(ngModel)]="courseName" 
             />
           </div>
-          <div class="col-5">
-            <h3 class="mt-2 mb-0 pl-3">
-              Conocimiento previo
-            </h3>
-            <input
-              class="ml-3 underline-input"
-              type="text"
-              pInputText
-              placeholder="Buscar por conocimiento previo"
+          <div class="col-4">
+            <h3 class="mt-2 mb-0 pl-3">Conocimiento previo</h3>
+            <p-dropdown 
+            class="pl-3"
+              [options]="mappedKnowledgeLevels" 
+              [(ngModel)]="selectedKnowledgeLevel" 
+              placeholder="Selecciona un nivel" 
+              [showClear]="true" 
             />
           </div>
           <div class="col-2 flex justify-content-center align-items-center">
-            <p-button label="Buscar" icon="pi pi-search" iconPos="right" />
+            <p-button 
+            label="Buscar" 
+            icon="pi pi-check" 
+            [loading]="loading" 
+            (onClick)="searchProducts()">
+        </p-button>
+                  </div>
+          <div class="col-1 flex justify-content-center align-items-center">
+            <p-button icon="pi pi-times"  [disabled]="!canClearFilters()" (click)="clearFilters()"/>
           </div>
         </div>
       </div>
