@@ -1,56 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { BehaviorSubject, Observable, of } from 'rxjs';
-import { Product } from '../public/interfaces/product.iterface'; // Importar la interfaz Product
+import { BehaviorSubject, Observable } from 'rxjs';
+import { Product } from '../public/interfaces/product.iterface';
 import { Environment } from '../../environments/enviroment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
-  private products: Product[] = [
-    {
-      id: 1,
-      image: '../../../../../assets/Recommendation.svg',
-      name: 'Manicuria electrica',
-      inventoryStatus: 'In Stock',
-      price: 29.99,
-      rating: 4
-    },
-    {
-      id: 2,
-      image: '../../../../../assets/Imagen 8.png',
-      name: 'Esmaltado semipermanente',
-      inventoryStatus: 'Out of Stock',
-      price: 49.99,
-      rating: 1
-    },
-    {
-      id: 3,
-      image: '../../../../../assets/Imagen 9.png',
-      name: 'Anatomía y patologías de la uña',
-      inventoryStatus: 'In Stock',
-      price: 19.99,
-      rating: 4
-    },
-    {
-      id: 4,
-      image: '../../../../../assets/Imagen 10.png',
-      name: 'Perfeccionamiento en softgel',
-      inventoryStatus: 'Low Stock',
-      price: 39.99,
-      rating: 3
-    },
-    {
-      id: 5,
-      image: '../../../../../assets/Recommendation.svg',
-      name: 'Product 5',
-      inventoryStatus: 'In Stock',
-      price: 59.99,
-      rating: 5
-    }
-  ];
 
+export class ProductService {
   private baseUrl = Environment.apiUrl;
   private idSource = new BehaviorSubject<string>('');
   public currentId = this.idSource.asObservable();
@@ -59,46 +17,92 @@ export class ProductService {
 
   // Obtener todos los productos (GET)
   getAllProducts(): Observable<Product[]> {
-    return of(this.products); // Simulación con el mock local
+    const mockProducts: Product[] = [
+      {
+        id: 1,
+        IdType: 101,
+        IdUser: 1001,
+        Professor: 'Juan Perez',
+        Price: 100.0,
+        Title: 'Curso de Angular',
+        Description: 'Curso introductorio de Angular',
+        DescriptionProgram: 'Contenido completo del curso',
+        Duration: '20 horas',
+        DurationWeek: '4 semanas',
+        Category: 'Programación',
+        KnowledgeLevel: 'Principiante',
+        Favorite: false,
+        Comprado: false,
+        Videos: [
+          'data:video/mp4;base64,AAAAGGZ0eXBtcDQyAAAAAGlzb...',
+          'data:video/mp4;base64,BBBBGGZ0eXBtcDQyAAAAAGlzb...'
+        ], // Ejemplo de videos en formato base64
+        file: []
+      },
+      {
+        id: 2,
+        IdType: 102,
+        IdUser: 1002,
+        Professor: 'Maria Gomez',
+        Price: 150.0,
+        Title: 'Curso de React',
+        Description: 'Curso avanzado de React',
+        DescriptionProgram: 'Contenido avanzado del curso',
+        Duration: '30 horas',
+        DurationWeek: '5 semanas',
+        Category: 'Desarrollo Web',
+        KnowledgeLevel: 'Intermedio',
+        Favorite: true,
+        Comprado: true,
+        Videos: [
+          'data:video/mp4;base64,CCCCGGZ0eXBtcDQyAAAAAGlzb...',
+          'data:video/mp4;base64,DDDDGGZ0eXBtcDQyAAAAAGlzb...'
+        ], // Ejemplo de videos en formato base64
+        file: []
+      }
+    ];
+  
+    return new Observable<Product[]>((observer) => {
+      observer.next(mockProducts);
+      observer.complete();
+    });
   }
+  
 
   // Obtener producto por ID (GET)
-  getProductById(id: number): Observable<Product | undefined> {
-    const product = this.products.find(p => p.id === id);
-    return of(product); // Simulación con el mock local
+  getProductById(id: number): Observable<Product> {
+    return this.http.get<Product>(`${this.baseUrl}/products/${id}`);
   }
 
   // Agregar un nuevo producto (POST)
-  addProduct(product: Product): Observable<Product> {
-    this.products.push(product); // Simulación con el mock local
-    return of(product); // Simulación con el mock local
+  addProduct(formData: FormData): Observable<Product> {
+    return this.http.post<Product>(`${this.baseUrl}/api/publication`, formData, {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    });
   }
 
   // Eliminar un producto (DELETE)
   deleteProduct(id: number): Observable<void> {
-    this.products = this.products.filter(p => p.id !== id); // Simulación con el mock local
-    return of(); // Simulación con el mock local
+    return this.http.delete<void>(`${this.baseUrl}/products/${id}`);
   }
 
   // Actualizar un producto (PUT)
   updateProduct(product: Product): Observable<Product> {
-    const index = this.products.findIndex(p => p.id === product.id);
-    if (index > -1) {
-      this.products[index] = product; // Simulación con el mock local
-    }
-    return of(product); // Simulación con el mock local
+    return this.http.put<Product>(`${this.baseUrl}/products/${product.IdType}`, product, {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    });
   }
-  dataBindindId(id: string){
+
+  // Método para enlazar un ID
+  dataBindindId(id: string) {
     console.log(id);
     this.idSource.next(id);
   }
 
+  // Método para filtrar productos
   filterProducts(name: string, knowledge: string): Observable<Product[]> {
-    const filteredProducts = this.products.filter(product => 
-      product.name.toLowerCase().includes(name.toLowerCase()) &&
-      product.inventoryStatus.toLowerCase().includes(knowledge.toLowerCase())
-    );
-    return of(filteredProducts);
+    return this.http.get<Product[]>(`${this.baseUrl}/products`, {
+      params: { name, knowledge }
+    });
   }
-
 }

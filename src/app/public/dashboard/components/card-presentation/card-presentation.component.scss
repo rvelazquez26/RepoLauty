@@ -18,9 +18,9 @@
     border: none;
     border-bottom: 1px solid #000;
     outline: none;
-    width: calc(100% - 2rem); /* Ajusta el ancho del input para compensar el margen izquierdo */
-    box-sizing: border-box; /* Asegura que el padding y border se incluyan en el ancho total */
-    padding: 0.5rem 0; /* Añade un padding superior e inferior para que el texto no se corte */
+    width: calc(100% - 2rem);
+    box-sizing: border-box;
+    padding: 0.5rem 0;
   }
 
 :host ::ng-deep{
@@ -39,13 +39,13 @@
         border: none;
     }
     .p-button {
-      display: flex;                  /* Usar Flexbox */
-      justify-content: center;        /* Centrar horizontalmente */
+      display: flex;      
+      justify-content: center;    
       align-items: center;    
   }
   
-  .p-button .pi {                  /* Asegúrate de que el icono se centre */
-      margin-right: 12px;               /* Centrar icono si es necesario */
+  .p-button .pi {                
+      margin-right: 12px;         
   }
   
 }

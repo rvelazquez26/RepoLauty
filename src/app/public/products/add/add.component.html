@@ -1,0 +1,164 @@
+<div class="pl-5 pr-5" style="background-color: rgba(175, 175, 175, 0.267)">
+  <form
+    class="curso-container grid"
+    [formGroup]="productForm"
+    (ngSubmit)="saved()"
+  >
+    <div class="col-12">
+      <input
+        pInputText
+        placeholder="Añadir nombre del curso"
+        formControlName="Title"
+      />
+    </div>
+
+    <div class="col-8 video-upload-section">
+      <div
+        class="upload text-center transparent-border"
+        style="
+          height: 400px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        "
+        (dragover)="preventDefault($event)"
+        (drop)="onFileDrop($event)"
+      >
+        <p>
+          Arrastrar los videos correspondientes al curso o seleccionarlos desde:
+        </p>
+        <p-fileUpload
+          #fileUpload
+          mode="basic"
+          name="file"
+          (onSelect)="onFileSelect($event)"
+          [chooseLabel]="'Elegir archivo'"
+        ></p-fileUpload>
+      </div>
+    </div>
+
+    <div class="col-4 contenido-curso">
+      <div class="grid">
+        <div class="col-12">
+          <p-panel header="Imágenes del curso" class="p-shadow-3">
+            <ul>
+              <li *ngFor="let imageFile of imageFiles">{{ imageFile.name }}</li>
+            </ul>
+          </p-panel>
+        </div>
+      </div>
+      <div class="grid">
+        <div class="col-12">
+          <p-panel header="Videos del curso" class="p-shadow-3">
+            <ul>
+              <li *ngFor="let videoFile of videoFiles">{{ videoFile.name }}</li>
+            </ul>
+          </p-panel>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <p-card class="flex justify-content-center mt-2">
+        <p class="information">Información</p>
+        <div class="grid">
+          <div class="col-1 flex align-items-center">
+            <span class="pi pi-clock"></span>
+          </div>
+          <div class="col-11 flex justify-content-center">
+            <input
+              pInputText
+              placeholder="Añadir horario"
+              class="nombre-curso"
+              formControlName="Duration"
+            />
+          </div>
+        </div>
+        <div class="grid">
+          <div class="col-1 flex align-items-center">
+            <span class="pi pi-calendar"></span>
+          </div>
+          <div class="col-11 flex justify-content-center">
+            <input
+              pInputText
+              placeholder="Añadir horario en semana"
+              class="nombre-curso"
+              formControlName="DurationWeek"
+            />
+          </div>
+        </div>
+        <div class="grid">
+          <div class="col-1 flex align-items-center">
+            <span class="pi pi-book"></span>
+          </div>
+          <div class="col-11 flex justify-content-center">
+            <p-dropdown
+              [options]="categoryOptions"
+              optionLabel="name"
+              optionValue="id"
+              formControlName="Category"
+              placeholder="Añadir categoría"
+            ></p-dropdown>
+          </div>
+        </div>
+        <div class="grid">
+          <div class="col-1 flex align-items-center">
+            <span class="pi pi-verified"></span>
+          </div>
+          <div class="col-11 flex justify-content-center">
+            <input
+              pInputText
+              placeholder="Añadir nivel de conocimiento"
+              class="nombre-curso"
+              formControlName="KnowledgeLevel"
+            />
+          </div>
+        </div>
+        <div class="grid">
+          <div class="col-1 flex align-items-center">
+            <span class="pi pi-dollar"></span>
+          </div>
+          <div class="col-11 flex justify-content-center">
+            <input
+              pInputText
+              placeholder="Añadir precio"
+              type="number"
+              class="nombre-curso"
+              formControlName="Price"
+            />
+          </div>
+        </div>
+      </p-card>
+    </div>
+
+    <div class="col-8">
+      <h3>¿Qué ofrece este curso?</h3>
+      <input
+        pInputText
+        placeholder="Completar según corresponda"
+        class="w-full input-height"
+        formControlName="Description"
+      />
+
+      <p-divider></p-divider>
+
+      <h3>Programa</h3>
+      <input
+        pInputText
+        placeholder="Completar con el programa del curso"
+        class="w-full input-height"
+        formControlName="DescriptionProgram"
+      />
+    </div>
+
+    <div class="col-12 flex justify-content-end">
+      <p-button
+        class="cancelar"
+        (onClick)="cancelar()"
+        label="Cancelar"
+      ></p-button>
+      <p-button type="submit" class="pl-2" label="Guardar"></p-button>
+    </div>
+  </form>
+</div>

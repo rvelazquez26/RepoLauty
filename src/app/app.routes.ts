@@ -6,6 +6,7 @@ import { AuthComponent } from './auth/auth.component';
 import { LoginGuard } from './core/guards/login.guard';
 import { DetailsComponent } from './public/products/details/details.component';
 import { MainComponent } from './public/main/main.component';
+import { AddComponent } from './public/products/add/add.component';
 
 export const routes: Routes = [
   {
@@ -35,6 +36,10 @@ export const routes: Routes = [
       {
         path: 'product/view',
         component: DetailsComponent,
+      },
+      {
+        path: 'product/add',
+        component: AddComponent,
       },
       {
         path: '',

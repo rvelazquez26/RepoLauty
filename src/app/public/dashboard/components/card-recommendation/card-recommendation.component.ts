@@ -2,12 +2,11 @@ import { Component } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { CarouselModule } from 'primeng/carousel';
 import { TagModule } from 'primeng/tag';
-import { FormsModule } from '@angular/forms'; // Necesario para [(ngModel)]
-
+import { FormsModule } from '@angular/forms';
 import { RatingModule } from 'primeng/rating';
 import { Router } from '@angular/router';
 import { ProductService } from '../../../../services/product.service';
-import { Product } from '../../../../public/interfaces/product.iterface'; // Importar la interfaz Product
+import { Product } from '../../../../public/interfaces/product.iterface';
 
 
 @Component({
@@ -36,7 +35,8 @@ export class CardRecommendationComponent {
   ngOnInit() {
     this.productService.getAllProducts().subscribe(products => {
       this.products = products;
-      this.filteredProducts = products; // Inicializa la lista filtrada
+      console.log("Products", this.products);
+      this.filteredProducts = products;
     });
     console.log(this.products);
   }
@@ -48,20 +48,18 @@ export class CardRecommendationComponent {
   
     // Filtramos los productos según el nombre y conocimiento
     this.filteredProducts = this.products.filter((product) => {
-      const matchesName = product.name.toLowerCase().includes(name.toLowerCase());
-      const matchesKnowledge = product.inventoryStatus.toLowerCase().includes(knowledge.toLowerCase()); // Cambia según tu lógica
+      const matchesName = product.Title.toLowerCase().includes(name.toLowerCase());
+      const matchesKnowledge = product.KnowledgeLevel.toLowerCase().includes(knowledge.toLowerCase()); // Cambia según tu lógica
   
       return matchesName && matchesKnowledge;
     });
   
     // Definimos el producto genérico
-    const genericProduct: Product = {
+    const genericProduct: any = {
       id: 0, // Cambia null a un número como 0
-      name: 'Curso Genérico',
-      price: 0, // Asegúrate de que esto sea un número
-      image: 'https://res.cloudinary.com/dgcyvw24o/image/upload/t_asd/v1727848172/aaa_lzx8jg.jpg',
-      rating: 0,
-      inventoryStatus: 'disponible',
+      Title: 'Curso Genérico',
+      Price: 0, // Asegúrate de que esto sea un número
+      Description: 'disponible',
     };
     
     
@@ -112,7 +110,6 @@ export class CardRecommendationComponent {
   public viewProduct(id: number){
     this.productService.dataBindindId(id.toString());
     this.router.navigate(['main/product/view']);
-    console.log('Ver producto');
   }
   
 }
