@@ -37,7 +37,6 @@ export class ProductService {
           'data:video/mp4;base64,AAAAGGZ0eXBtcDQyAAAAAGlzb...',
           'data:video/mp4;base64,BBBBGGZ0eXBtcDQyAAAAAGlzb...'
         ], // Ejemplo de videos en formato base64
-        file: []
       },
       {
         id: 2,
@@ -58,7 +57,26 @@ export class ProductService {
           'data:video/mp4;base64,CCCCGGZ0eXBtcDQyAAAAAGlzb...',
           'data:video/mp4;base64,DDDDGGZ0eXBtcDQyAAAAAGlzb...'
         ], // Ejemplo de videos en formato base64
-        file: []
+      },
+      {
+        id: 1,
+        IdType: 101,
+        IdUser: 1001,
+        Professor: 'Juan Perez',
+        Price: 100.0,
+        Title: 'Curso de Angular',
+        Description: 'Curso introductorio de Angular',
+        DescriptionProgram: 'Contenido completo del curso',
+        Duration: '20 horas',
+        DurationWeek: '4 semanas',
+        Category: 'Programación',
+        KnowledgeLevel: 'Principiante',
+        Favorite: false,
+        Comprado: false,
+        Videos: [
+          'data:video/mp4;base64,AAAAGGZ0eXBtcDQyAAAAAGlzb...',
+          'data:video/mp4;base64,BBBBGGZ0eXBtcDQyAAAAAGlzb...'
+        ], // Ejemplo de videos en formato base64
       }
     ];
   
@@ -74,12 +92,13 @@ export class ProductService {
     return this.http.get<Product>(`${this.baseUrl}/products/${id}`);
   }
 
-  // Agregar un nuevo producto (POST)
-  addProduct(formData: FormData): Observable<Product> {
-    return this.http.post<Product>(`${this.baseUrl}/api/publication`, formData, {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-    });
-  }
+addProduct(product: Product): Observable<Product> { 
+  console.log(product);
+  return this.http.post<Product>(`${this.baseUrl}/api/publication`, product, 
+    { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) 
+    }); }
+
+
 
   // Eliminar un producto (DELETE)
   deleteProduct(id: number): Observable<void> {

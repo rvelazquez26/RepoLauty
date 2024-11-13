@@ -1,0 +1,44 @@
+.payment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  .payment-button {
+    width: 80%;
+    padding: 0.8rem;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .cbu-container {
+    margin-top: 1rem;
+    padding: 1rem;
+    color: #333;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    width: 80%;
+    text-align: center;
+    animation: slideDown 0.3s ease-out forwards;
+  }
+  
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      max-height: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      max-height: 100px;
+      transform: translateY(0);
+    }
+  }
+
+  :host ::ng-deep{
+      .p-dialog .p-dialog-header{
+        padding: 10px;
+      } 
+    }

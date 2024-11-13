@@ -14,5 +14,4 @@ export interface Product {
   Favorite: boolean;
   Comprado: boolean;
   Videos: any[]; 
-  file: any[]; 
 }

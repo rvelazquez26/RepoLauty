@@ -66,7 +66,6 @@ export class AddComponent {
       Favorite: [false],
       Comprado: [false],
       Videos: [[]],
-      file: [[]],
     });
   
     this.productForm.get('Category')?.valueChanges.subscribe((selectedCategoryId) => {

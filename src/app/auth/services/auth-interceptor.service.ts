@@ -29,7 +29,7 @@ import { AuthService } from './auth.service';
         //Se clona la solicitud HTTP original ya que esta es inmutable, significa que no se pueden modificar directamente 
         request = req.clone({
             setHeaders:{ 
-                authorization: `${token}`,//se agrega el token como encabezado
+                Authorization: `${token}`,//se agrega el token como encabezado
             },
         });
     }

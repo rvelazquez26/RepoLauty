@@ -43,10 +43,11 @@ export class RegisterComponent {
 
 ngOnInit(): void {
   this.registerForm = this.fb.group({
-    nombre: ['', Validators.required],
-    apellido: ['', Validators.required],
+    idRol: 2,
+    name: ['', Validators.required],
+    lastname: ['', Validators.required],
     mail: ['', Validators.required],
-    contraseña: ['', Validators.required]
+    password: ['', Validators.required]
   });
 }
 
@@ -54,11 +55,7 @@ onSubmit(): void {
   console.log(this.registerForm.valid);
   
   if (this.registerForm.valid) {
-    const formData = {
-      ...this.registerForm.value,
-      numero_de_acceso: 2 
-    };
-    this.userService.postUser(formData).subscribe({
+    this.userService.postUser(this.registerForm.value).subscribe({
       next: (response: string) => {
         console.log('Mensaje:', response);
         this.toast.showSuccess(response);

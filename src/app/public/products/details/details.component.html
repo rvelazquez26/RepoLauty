@@ -124,7 +124,6 @@
                   severity="secondary"
                   (click)="onBuyClick()"
                 ></p-button>
-              
                 <p-button
                   class="flex align-items-center"
                   label="Añadir a favoritos"
@@ -241,6 +240,12 @@
     </p-dialog>
   </div>
 </div>
+<app-payment-modal
+  *ngIf="showPaymentModal"
+  (paymentSelected)="onPaymentSelected($event)"
+  (closeModal)="showPaymentModal = false"
+></app-payment-modal>
+
 <p-dialog header="No iniciaste sesión" [(visible)]="showAuthModal" [style]="{'width': '30vw'}">
     <p class="p-5">Debes iniciar sesión para realizar esta acción.</p>
     <p-footer>

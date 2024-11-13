@@ -1,0 +1,15 @@
+<p-dialog header="Compra tu curso" [(visible)]="visible" [modal]="true" [style]="{ width: '30vw' }">
+    <div class="p-3 text-center">
+      <p>Seleccione su método de pago, complete sus datos, realice el pago 
+        correspondiente</p>
+      <div class="payment-options flex justify-content-center">
+        <p-button label="Mercado Pago" icon="pi pi-credit-card" class="p-button-success" (click)="selectPaymentMethod('MercadoPago')"></p-button>
+        <p-button label="Transferencia" icon="pi pi-money-bill" class="p-button-secondary" (click)="selectPaymentMethod('Transferencia')"></p-button>
+      </div>
+      @if(showCBU){
+        <div class="cbu-container flex justify-content-center w-full">
+            <span class="text-center">CBU: 4554646465464564564646464646</span>
+        </div>
+      }
+    </div>
+</p-dialog>

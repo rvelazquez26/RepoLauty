@@ -15,7 +15,9 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
   
-  postUser(user: User): Observable<string> {
-    return this.http.post<string>(`${this.baseUrl}/usuario`, user, { responseType: 'text' as 'json' });
+  postUser(user: User): Observable<any> {    
+    console.log(user);
+    
+    return this.http.post<string>(`${this.baseUrl}/api/user`, user, { responseType: 'text' as 'json' });
   }
 }

@@ -21,6 +21,8 @@ export class CardRecommendationComponent {
   public products: Product[] = [];
   public filteredProducts: Product[] = [];
 
+  public isLessThanFour = false;
+
   genericProduct = {
     id: null,
     name: 'Curso Genérico',
@@ -37,13 +39,14 @@ export class CardRecommendationComponent {
       this.products = products;
       console.log("Products", this.products);
       this.filteredProducts = products;
+      this.isLessThanFour = this.filteredProducts.length < 4;
     });
     console.log(this.products);
   }
 
   applyFilter(filterData: { name: string; knowledge: any }) {
     console.log(filterData);
-    
+    this.isLessThanFour = this.filteredProducts.length < 4;
     const { name, knowledge } = filterData;
   
     // Filtramos los productos según el nombre y conocimiento
