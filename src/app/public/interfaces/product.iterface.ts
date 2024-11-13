@@ -13,5 +13,5 @@ export interface Product {
   KnowledgeLevel: string;
   Favorite: boolean;
   Comprado: boolean;
-  Videos: any[]; 
+  FilePaths: any[]; 
 }

@@ -56,7 +56,7 @@ export class AddComponent {
       IdUser: [this.userId],
       Professor: [this.name],
       Price: [null],
-      Title: ['', Validators.required],
+      Title: ['Titulo', Validators.required],
       Description: ['', Validators.required],
       DescriptionProgram: [''],
       Duration: [''],
@@ -65,7 +65,7 @@ export class AddComponent {
       KnowledgeLevel: [''],
       Favorite: [false],
       Comprado: [false],
-      Videos: [[]],
+      FilePaths: [[]],
     });
   
     this.productForm.get('Category')?.valueChanges.subscribe((selectedCategoryId) => {
@@ -81,7 +81,7 @@ export class AddComponent {
           this.videoFiles.push(file);
           // Añadir el archivo convertido a base64 al campo Videos en el formulario
           const currentVideos = this.productForm.get('Videos')?.value || [];
-          this.productForm.patchValue({ Videos: [...currentVideos, base64] });
+          this.productForm.patchValue({ FilePaths: [...currentVideos, base64] });
         });
       } else if (file.type === 'image/png') {
         this.imageFiles.push(file);

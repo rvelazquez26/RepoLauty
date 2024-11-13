@@ -46,10 +46,11 @@ export class DetailsComponent {
 
   randomImages: string[] = [];
 
-  displayModal: boolean = false; // Controla si el modal está abierto o cerrado
-  selectedImage: string | null = null; // Guarda la imagen seleccionada
+  displayModal: boolean = false; 
+  selectedImage: string | null = null; 
 
   public product?: Product;
+  public idPublicacion?: number;
   public isDialogVisible: boolean = false;
   public showAuthModal: boolean = false;
   public showPaymentModal: boolean = false;
@@ -63,10 +64,11 @@ export class DetailsComponent {
 
   ngOnInit(): void {
     this.productService.currentId.subscribe((id) => {
-      // if(!id){
-      //   this.router.navigate(['/not-found]']);
-      //   return;
-      // }
+      if(!id){
+        this.router.navigate(['/not-found]']);
+        return;
+      }
+      this.idPublicacion = Number(id);
       this.getProduct('1');
       this.getRandomImages(4);
       this.scrollToTop();
@@ -89,13 +91,13 @@ export class DetailsComponent {
 
   getRandomImages(count: number): void {
     this.randomImages = [];
-    const shuffled = [...this.images].sort(() => 0.5 - Math.random()); // Mezcla las imágenes
-    this.randomImages = shuffled.slice(0, count); // Selecciona 'count' imágenes al azar
+    const shuffled = [...this.images].sort(() => 0.5 - Math.random());
+    this.randomImages = shuffled.slice(0, count); 
   }
 
   showImage(image: string): void {
-    this.selectedImage = image; // Establece la imagen seleccionada
-    this.displayModal = true; // Abre el modal
+    this.selectedImage = image;
+    this.displayModal = true;
   }
   getProduct(id: string) {
     this.productService.getProductById(Number(id)).subscribe({
@@ -113,7 +115,6 @@ export class DetailsComponent {
     this.isDialogVisible = true;
   }
 
-  // Función para manejar el clic en "Comprar"
   onBuyClick() {
     if (!this.authService.isLoggedIn()) {
       this.showAuthModal = true;
@@ -123,9 +124,25 @@ export class DetailsComponent {
   }
 
   onPaymentSelected(method: string) {
-    this.showPaymentModal = false;
-    console.log('Método de pago seleccionado:', method);
+    console.log(method);
+    
+    if (method == 'MercadoPago') {
+        this.productService.createPaymentPreference(this.idPublicacion!).subscribe(
+          (response) => {
+            const preferenceId = response.preferenceId;
+        
+        if (preferenceId) {
+          const mpUrl = `https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=${preferenceId}`;
+          window.location.href = mpUrl;
+        }
+          },
+          (error) => {
+            console.error('Error al crear la preferencia de pago:', error);
+          }
+        );
+    }
   }
+  
 
   onAddToFavoritesClick() {
     if (!this.authService.isLoggedIn()) {

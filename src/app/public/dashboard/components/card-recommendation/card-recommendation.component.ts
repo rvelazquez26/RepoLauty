@@ -49,7 +49,6 @@ export class CardRecommendationComponent {
     this.isLessThanFour = this.filteredProducts.length < 4;
     const { name, knowledge } = filterData;
   
-    // Filtramos los productos según el nombre y conocimiento
     this.filteredProducts = this.products.filter((product) => {
       const matchesName = product.Title.toLowerCase().includes(name.toLowerCase());
       const matchesKnowledge = product.KnowledgeLevel.toLowerCase().includes(knowledge.toLowerCase()); // Cambia según tu lógica
@@ -57,7 +56,6 @@ export class CardRecommendationComponent {
       return matchesName && matchesKnowledge;
     });
   
-    // Definimos el producto genérico
     const genericProduct: any = {
       id: 0, // Cambia null a un número como 0
       Title: 'Curso Genérico',
@@ -67,7 +65,6 @@ export class CardRecommendationComponent {
     
     
   
-    // Comprobamos cuántos productos hay y agregamos genéricos si es necesario
     const productsCount = this.filteredProducts.length;
     const neededGenericProducts = 4 - productsCount;
   

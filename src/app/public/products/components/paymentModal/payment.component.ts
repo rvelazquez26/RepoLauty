@@ -21,6 +21,7 @@ export class PaymentModalComponent {
   @Output() closeModal = new EventEmitter<void>();
 
   selectPaymentMethod(method: string) {
+    this.paymentSelected.emit(method);
     if (method === 'Transferencia') {
       this.showCBU = !this.showCBU;
     } else {

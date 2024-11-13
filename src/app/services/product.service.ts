@@ -33,7 +33,7 @@ export class ProductService {
         KnowledgeLevel: 'Principiante',
         Favorite: false,
         Comprado: false,
-        Videos: [
+        FilePaths: [
           'data:video/mp4;base64,AAAAGGZ0eXBtcDQyAAAAAGlzb...',
           'data:video/mp4;base64,BBBBGGZ0eXBtcDQyAAAAAGlzb...'
         ], // Ejemplo de videos en formato base64
@@ -53,7 +53,7 @@ export class ProductService {
         KnowledgeLevel: 'Intermedio',
         Favorite: true,
         Comprado: true,
-        Videos: [
+        FilePaths: [
           'data:video/mp4;base64,CCCCGGZ0eXBtcDQyAAAAAGlzb...',
           'data:video/mp4;base64,DDDDGGZ0eXBtcDQyAAAAAGlzb...'
         ], // Ejemplo de videos en formato base64
@@ -73,7 +73,7 @@ export class ProductService {
         KnowledgeLevel: 'Principiante',
         Favorite: false,
         Comprado: false,
-        Videos: [
+        FilePaths: [
           'data:video/mp4;base64,AAAAGGZ0eXBtcDQyAAAAAGlzb...',
           'data:video/mp4;base64,BBBBGGZ0eXBtcDQyAAAAAGlzb...'
         ], // Ejemplo de videos en formato base64
@@ -116,6 +116,10 @@ addProduct(product: Product): Observable<Product> {
   dataBindindId(id: string) {
     console.log(id);
     this.idSource.next(id);
+  }
+
+  createPaymentPreference(idPublicacion: number): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/api/Payment/create-preference/${idPublicacion}`, {});
   }
 
   // Método para filtrar productos
